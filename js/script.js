@@ -93,6 +93,33 @@ window.addEventListener('resize', function () {
     document.querySelector('.contact-content').classList.remove('min');
   }
 });
+""; // ----------------------- Split screen -----------------------//
+
+var screenContainer = document.querySelector(".screen__container");
+var layerBody = document.querySelectorAll(".layer__body");
+var screenHandle = document.querySelector(".screen__handle");
+var layerContainerTop = document.querySelector(".layer__container-top");
+var layerContainerBottom = document.querySelector(".layer__container-bottom");
+window.addEventListener('resize', function () {
+  var screenContainerWidth = screenContainer.offsetWidth;
+  layerBody.forEach(function (item) {
+    item.style.width = screenContainerWidth + 'px';
+  });
+});
+window.addEventListener('load', function () {
+  var screenContainerWidth = screenContainer.offsetWidth;
+  layerBody.forEach(function (item) {
+    item.style.width = screenContainerWidth + 'px';
+  });
+});
+screenContainer.addEventListener('mousemove', function (e) {
+  var handlePos = e.offsetX;
+  screenHandle.style.left = handlePos + 'px';
+  var layerBottomWidth = screenContainer.offsetWidth - e.offsetX;
+  var layerTopWidth = screenContainer.offsetWidth - layerBottomWidth;
+  layerContainerBottom.style.width = layerBottomWidth + 'px';
+  layerContainerTop.style.width = layerTopWidth + 'px';
+});
 
 var DrawAnimation = /*#__PURE__*/function () {
   function DrawAnimation() {
