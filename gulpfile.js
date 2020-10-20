@@ -128,7 +128,7 @@ function watchFile() {
 }
 
 async function clean() {
-  const deletedFilePaths = await del(['/index.html']);
+  const deletedFilePaths = await del(['*.html']);
   const deletedDirectoryPaths = await del(['css', 'js','scss', 'doc']);
 }
 
