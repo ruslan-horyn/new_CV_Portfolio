@@ -325,6 +325,175 @@
   font-size: 1.3rem;
 }
 
+.todo__container,
+.todo__form,
+.todo__items,
+.todo__items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.todo__container {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: column nowrap;
+  flex-flow: column nowrap;
+  width: 65%;
+  margin: auto;
+}
+
+.todo__form-box,
+.todo__form {
+  width: 100%;
+}
+
+.todo__form {
+  margin-bottom: 5px;
+}
+
+.todo__input,
+.todo__button,
+.todo__button-trash,
+.todo__button-complete,
+.todo__item {
+  display: block;
+  padding: .6rem;
+  font-size: 1.5rem;
+  border: none;
+  -webkit-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+  background-color: #f5f5f5;
+  border-radius: 0;
+}
+
+.todo__input {
+  width: 100%;
+  border-radius: 3px 0 0 3px;
+}
+
+.todo__button {
+  cursor: pointer;
+  color: #1b7242;
+  border-radius: 0 3px 3px 0;
+}
+
+.todo__button:hover {
+  color: #f5f5f5;
+  background-color: #1b7242;
+}
+
+.todo__box-list {
+  width: 100%;
+}
+
+.todo__items {
+  background-color: #f5f5f5;
+  margin-bottom: 5px;
+  border-radius: 3px;
+  overflow: hidden;
+  -webkit-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+.todo__items-comleted {
+  opacity: .6;
+  text-decoration: line-through;
+  color: #222222;
+}
+
+.todo__items-fall {
+  opacity: 0;
+  -webkit-transform: translateY(8rem) rotateZ(20deg);
+  -ms-transform: translateY(8rem) rotate(20deg);
+  transform: translateY(8rem) rotateZ(20deg);
+}
+
+.todo__item {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  line-height: 1rem;
+  color: #222222;
+  font-size: 1rem;
+  padding: .4rem;
+}
+
+.todo__button-trash,
+.todo__button-complete {
+  color: #f5f5f5;
+  font-size: .8rem;
+  cursor: pointer;
+}
+
+.todo__button-complete {
+  background-color: #198b6d;
+}
+
+.todo__button-complete:hover {
+  background-color: #1b7242;
+}
+
+.todo__button-trash {
+  background-color: #ff6f47;
+}
+
+.todo__button-trash:hover {
+  background-color: #bf4524;
+}
+
+.todo__select {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+.todo__select::after {
+  content: "\25BC";
+  position: absolute;
+  padding: 0 .2rem;
+  color: #198b6d;
+  top: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+.todo__select:hover::after {
+  color: #1b7242;
+}
+
+.todo__filter {
+  font-family: inherit;
+  font-weight: inherit;
+  position: relative;
+  padding: .2rem .3rem;
+  display: block;
+  width: 100%;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  border: none;
+  font-size: .8rem;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.fas {
+  pointer-events: none;
+}
+
 *,
 *::before,
 ::after {
@@ -1023,10 +1192,16 @@ p {
   transform: translateY(-1%);
 }
 
-.divider .line::before {
+.divider .line::before,
+.divider .line::after {
   position: absolute;
+  content: '';
   top: 0;
   left: 0;
+  border-radius: 15px;
+}
+
+.divider .line::before {
   -webkit-transform: translate(-50%, 95%);
   -ms-transform: translate(-50%, 95%);
   transform: translate(-50%, 95%);
@@ -1034,14 +1209,10 @@ p {
   height: 9px;
   background: #222222;
   border: 2px solid #198b6d;
-  border-radius: 15px;
   z-index: 1;
 }
 
 .divider .line::after {
-  position: absolute;
-  top: 0;
-  left: 0;
   -webkit-transform: translate(-50%, 38%);
   -ms-transform: translate(-50%, 38%);
   transform: translate(-50%, 38%);
@@ -1049,7 +1220,6 @@ p {
   height: 15px;
   background: #1b7242;
   opacity: 0.5;
-  border-radius: 15px;
 }
 
 .skill {
@@ -1796,6 +1966,10 @@ p {
 
   .layer__text h5 {
     display: none;
+  }
+
+  .todo__container {
+    width: 100%;
   }
 
   .home-section .home-title h2 {
