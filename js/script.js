@@ -119,7 +119,87 @@ screenContainer.addEventListener('mousemove', function (e) {
   var layerTopWidth = screenContainer.offsetWidth - layerBottomWidth;
   layerContainerBottom.style.width = layerBottomWidth + 'px';
   layerContainerTop.style.width = layerTopWidth + 'px';
-});
+}); // ----------------------- End Split screen -----------------------//
+// ----------------------- Todo list -----------------------//
+
+var todoInput = document.querySelector('.todo__input');
+var todoButton = document.querySelector('.todo__button');
+var todoList = document.querySelector('.todo__list');
+var filterOption = document.querySelector('.todo__filter');
+todoButton.addEventListener('click', addTodo);
+todoList.addEventListener('click', deleteOrCheck);
+filterOption.addEventListener('click', filterTodo);
+
+function addTodo(e) {
+  e.preventDefault();
+
+  if (!todoInput.value == '') {
+    var todoItems = document.createElement('div');
+    todoItems.classList.add('todo__items');
+    var newTodo = document.createElement('li');
+    newTodo.innerText = todoInput.value;
+    newTodo.classList.add('todo__item');
+    var completeBtn = document.createElement('button');
+    completeBtn.innerHTML = '<i class="fas fa-check"></i>';
+    completeBtn.classList.add('todo__button-complete');
+    var trashBtn = document.createElement('button');
+    trashBtn.innerHTML = '<i class="fas fa-trash"></i>';
+    trashBtn.classList.add('todo__button-trash');
+    todoItems.appendChild(newTodo);
+    todoItems.appendChild(completeBtn);
+    todoItems.appendChild(trashBtn);
+    todoList.appendChild(todoItems);
+    todoInput.value = '';
+  }
+}
+
+function deleteOrCheck(e) {
+  var item = e.target;
+  var todo = item.parentElement;
+
+  if (item.classList.contains('todo__button-trash')) {
+    todo.classList.add('todo__items-fall');
+    todo.addEventListener('transitionend', function () {
+      todo.remove();
+    });
+  } else if (item.classList.contains('todo__button-complete')) {
+    todo.classList.toggle('todo__items-comleted');
+  }
+}
+
+function filterTodo(e) {
+  var todos = _toConsumableArray(todoList.children);
+
+  todos.forEach(function (todo) {
+    switch (e.target.value) {
+      case "all":
+        todo.style.display = "flex";
+        break;
+
+      case "completed":
+        if (todo.classList.contains("todo__items-comleted")) {
+          todo.style.display = "flex";
+        } else {
+          todo.style.display = "none";
+        }
+
+        break;
+
+      case "uncompleted":
+        if (!todo.classList.contains("todo__items-comleted")) {
+          todo.style.display = "flex";
+        } else {
+          todo.style.display = "none";
+        }
+
+        break;
+
+      default:
+        break;
+    }
+  });
+} // ----------------------- End Todo list -----------------------//
+
 
 var DrawAnimation = /*#__PURE__*/function () {
   function DrawAnimation() {
