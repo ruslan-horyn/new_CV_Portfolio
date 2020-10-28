@@ -128,7 +128,7 @@ var todoList = document.querySelector('.todo__list');
 var filterOption = document.querySelector('.todo__filter');
 todoButton.addEventListener('click', addTodo);
 todoList.addEventListener('click', deleteOrCheck);
-filterOption.addEventListener('click', filterTodo);
+filterOption.addEventListener('change', filterTodo);
 
 function addTodo(e) {
   e.preventDefault();
